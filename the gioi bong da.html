@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071b17" />
+  <meta name="description" content="Khám phá bóng đá: lịch sử, giải đấu, cầu thủ, luật chơi và những giá trị tuyệt vời của môn thể thao vua." />
+  <title>THẾ GIỚI BÓNG ĐÁ — Trang chia sẻ kiến thức bóng đá</title>
+  <style>
+    :root {
+      --ink: #10231e;
+      --muted: #66756f;
+      --paper: #f5f7f2;
+      --white: #ffffff;
+      --green: #c8f36a;
+      --green-dark: #153c30;
+      --deep: #071b17;
+      --deep-2: #0e2b23;
+      --line: rgba(16, 35, 30, .11);
+      --serif: Arial, Tahoma, sans-serif;
+      --sans: Arial, Tahoma, 'Segoe UI', sans-serif;
+      --shadow: 0 22px 60px rgba(7, 27, 23, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #6e8b5a; font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 25px; height: 2px; background: currentColor; }
+    .section { padding: 108px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 46px; }
+    .section-head h2 { max-width: 660px; margin: 12px 0 0; font: 500 clamp(2.25rem, 4.3vw, 4rem)/1.06 var(--serif); letter-spacing: -.045em; }
+    .section-head p { max-width: 390px; margin: 0 0 5px; color: var(--muted); font-size: .96rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 22px; border: 0; border-radius: 5px; background: var(--green); color: var(--deep); font-size: .82rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; transition: transform .2s, background .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-3px); background: #d8ff82; }
+    .btn svg { width: 17px; height: 17px; }
+
+    /* Header */
+    .topline { background: #04120f; color: rgba(255,255,255,.62); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+    .topline .container { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .topline strong { color: var(--green); font-weight: 800; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(7, 27, 23, .96); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.09); }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: white; flex-shrink: 0; }
+    .brand-mark { display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid rgba(200,243,106,.65); border-radius: 50%; color: var(--green); }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-name { font-size: .92rem; font-weight: 900; line-height: 1.1; letter-spacing: .13em; }
+    .brand-name span { display: block; margin-top: 4px; color: rgba(255,255,255,.47); font-size: .55rem; font-weight: 600; letter-spacing: .25em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.1vw, 29px); }
+    .nav-links a { position: relative; color: rgba(255,255,255,.72); font-size: .76rem; font-weight: 700; transition: color .2s; white-space: nowrap; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -9px; height: 2px; background: var(--green); transition: right .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); }
+    .nav-links a:hover::after, .nav-links a.active::after { right: 0; }
+    .nav-cta { color: var(--green); font-size: .73rem; font-weight: 850; letter-spacing: .1em; white-space: nowrap; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; background: transparent; color: white; cursor: pointer; }
+    .menu-toggle svg { width: 21px; height: 21px; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; min-height: 670px; display: flex; align-items: center; color: white; background: radial-gradient(ellipse at 75% 45%, rgba(50,105,68,.42), transparent 38%), linear-gradient(112deg, #071b17 0%, #0d2e25 58%, #143c2c 100%); }
+    .hero::before { content: ''; position: absolute; inset: 0; opacity: .13; background-image: linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px); background-size: 58px 58px; mask-image: linear-gradient(90deg, black, transparent 85%); }
+    .hero::after { content: 'MÔN THỂ THAO VUA'; position: absolute; right: -35px; bottom: 5px; color: rgba(255,255,255,.035); font-size: clamp(4rem, 10vw, 9.5rem); font-weight: 950; letter-spacing: -.075em; white-space: nowrap; pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.02fr; align-items: center; gap: 30px; padding: 72px 0 86px; }
+    .hero-copy { width:100%; max-width: 570px; }
+    .hero .eyebrow { color: var(--green); }
+    .hero h1 { margin: 23px 0 23px; font: 500 clamp(3.8rem, 7.2vw, 6.8rem)/.91 var(--serif); letter-spacing: -.065em; }
+    .hero h1 em { color: var(--green); font-style: italic; }
+    .hero-copy > p { max-width: 490px; margin: 0 0 31px; color: rgba(255,255,255,.68); font-size: 1rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 23px; }
+    .text-link { display: inline-flex; align-items: center; gap: 10px; color: white; font-size: .8rem; font-weight: 800; }
+    .text-link svg { width: 18px; color: var(--green); }
+    .hero-art { position: relative; min-height: 440px; display: grid; place-items: center; }
+    .hero-art .orbit { position: absolute; width: min(39vw, 440px); aspect-ratio: 1; border: 1px solid rgba(200,243,106,.25); border-radius: 50%; }
+    .hero-art .orbit::before, .hero-art .orbit::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,.09); border-radius: 50%; inset: 34px; }
+    .hero-art .orbit::after { inset: 72px; border-color: rgba(200,243,106,.15); }
+    .hero-ball { position: relative; z-index: 2; width: min(32vw, 345px); filter: drop-shadow(0 35px 35px rgba(0,0,0,.36)); transform: rotate(-13deg); animation: float 5s ease-in-out infinite; }
+    .hero-tag { position: absolute; z-index: 3; right: 2%; bottom: 9%; padding: 15px 18px; border: 1px solid rgba(255,255,255,.2); background: rgba(6,25,20,.67); backdrop-filter: blur(10px); }
+    .hero-tag strong { display: block; color: var(--green); font: 500 1.55rem var(--serif); }
+    .hero-tag span { color: rgba(255,255,255,.64); font-size: .64rem; letter-spacing: .13em; text-transform: uppercase; }
+    .hero-note { position: absolute; left: 0; bottom: 28px; color: rgba(255,255,255,.42); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-13deg); } 50% { transform: translateY(-13px) rotate(-8deg); } }
+
+    /* Intro */
+    .intro { background: var(--paper); }
+    .intro-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: center; }
+    .intro-visual { position: relative; min-height: 410px; overflow: hidden; background: #dce8d5; }
+    .pitch { position: absolute; inset: 28px; border: 2px solid rgba(21,60,48,.55); background: linear-gradient(135deg, #a8c78f, #7ea86f); box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+    .pitch::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 2px solid rgba(255,255,255,.65); }
+    .pitch::after { content: ''; position: absolute; width: 100px; height: 100px; border: 2px solid rgba(255,255,255,.65); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .pitch-box { position: absolute; top: 50%; width: 18%; height: 47%; border: 2px solid rgba(255,255,255,.65); transform: translateY(-50%); }
+    .pitch-box.left { left: 0; border-left: 0; }.pitch-box.right { right: 0; border-right: 0; }
+    .pitch-dot { position: absolute; z-index: 1; top: 50%; left: 50%; width: 9px; height: 9px; border-radius: 50%; background: white; transform: translate(-50%,-50%); }
+    .pitch-ball { position: absolute; z-index: 2; width: 83px; right: 17%; top: 21%; filter: drop-shadow(0 13px 10px rgba(18,45,29,.25)); transform: rotate(20deg); }
+    .visual-caption { position: absolute; left: 0; bottom: 0; padding: 18px 22px; background: var(--green); color: var(--deep); font-size: .7rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .intro-copy h2 { margin: 13px 0 22px; font: 500 clamp(2.4rem, 4vw, 3.8rem)/1.05 var(--serif); letter-spacing: -.05em; }
+    .intro-copy p { color: var(--muted); margin: 0 0 17px; }
+    .intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; padding-top: 25px; border-top: 1px solid var(--line); }
+    .stat strong { display: block; color: var(--green-dark); font: 500 2rem var(--serif); }
+    .stat span { color: var(--muted); font-size: .72rem; }
+
+    /* History */
+    .history { background: #e9eee5; }
+    .history-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 80px; align-items: start; }
+    .history-side { position: sticky; top: 125px; }
+    .history-side h2 { margin: 13px 0 20px; font: 500 clamp(2.6rem, 4.6vw, 4.2rem)/.99 var(--serif); letter-spacing: -.055em; }
+    .history-side p { color: var(--muted); }
+    .history-stamp { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 12px 15px; border: 1px solid rgba(21,60,48,.2); color: var(--green-dark); font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+    .timeline { position: relative; padding-left: 34px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 10px; width: 1px; background: #b8c8b0; }
+    .time-item { position: relative; padding: 0 0 39px 15px; }
+    .time-item:last-child { padding-bottom: 0; }
+    .time-item::before { content: ''; position: absolute; left: -33px; top: 7px; width: 11px; height: 11px; border: 3px solid #e9eee5; border-radius: 50%; background: #6d9654; box-shadow: 0 0 0 1px #6d9654; }
+    .time-item .year { color: #6d9654; font-size: .75rem; font-weight: 900; letter-spacing: .14em; }
+    .time-item h3 { margin: 7px 0 7px; font: 500 1.55rem var(--serif); }
+    .time-item p { max-width: 570px; margin: 0; color: var(--muted); font-size: .9rem; }
+
+    /* Tournaments */
+    .tournaments { color: white; background: var(--deep); }
+    .tournaments .eyebrow { color: var(--green); }
+    .tournaments .section-head p { color: rgba(255,255,255,.58); }
+    .tournaments .section-head h2 { color: white; }
+    .tournament-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .tournament-card { position: relative; min-height: 370px; padding: 28px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(255,255,255,.13); background: linear-gradient(155deg, rgba(255,255,255,.09), rgba(255,255,255,.025)); transition: transform .25s, border-color .25s; }
+    .tournament-card:hover { transform: translateY(-7px); border-color: rgba(200,243,106,.6); }
+    .tournament-card::after { content: ''; position: absolute; width: 210px; height: 210px; right: -65px; top: 90px; border: 1px solid rgba(200,243,106,.13); border-radius: 50%; box-shadow: 0 0 0 22px rgba(200,243,106,.025), 0 0 0 45px rgba(200,243,106,.02); }
+    .trophy-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 62px; height: 62px; border: 1px solid rgba(200,243,106,.45); color: var(--green); }
+    .trophy-icon svg { width: 32px; height: 32px; }
+    .card-number { position: absolute; top: 27px; right: 28px; color: rgba(255,255,255,.24); font: 500 1.3rem var(--serif); }
+    .tournament-card h3 { position: relative; z-index: 1; margin: 0 0 9px; color: white; font: 500 2rem var(--serif); }
+    .tournament-card p { position: relative; z-index: 1; max-width: 290px; margin: 0; color: rgba(255,255,255,.58); font-size: .88rem; }
+    .card-kicker { display: block; margin-bottom: 14px; color: var(--green); font-size: .66rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+    .tournament-foot { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; margin-top: 26px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.5); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; }
+    .tournament-foot b { color: var(--green); font-size: .75rem; }
+
+    /* Players */
+    .players { background: #f5f7f2; }
+    .players-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .player-card { overflow: hidden; background: white; border: 1px solid var(--line); transition: transform .25s, box-shadow .25s; }
+    .player-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .player-visual { position: relative; min-height: 215px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg, #dce8d5, #a9c49b); }
+    .player-card:nth-child(2) .player-visual { background: linear-gradient(145deg, #eadfc9, #c5ad85); }
+    .player-card:nth-child(3) .player-visual { background: linear-gradient(145deg, #c9dfe0, #8bb8ba); }
+    .player-card:nth-child(4) .player-visual { background: linear-gradient(145deg, #d9d5e8, #a39abf); }
+    .player-card:nth-child(5) .player-visual { background: linear-gradient(145deg, #e8d5c9, #c99f85); }
+    .player-silhouette { width: 143px; height: 175px; opacity: .82; filter: drop-shadow(0 13px 9px rgba(16,35,30,.12)); }
+    .player-country { position: absolute; top: 14px; left: 14px; padding: 6px 8px; background: rgba(255,255,255,.68); color: #344a40; font-size: .6rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .player-index { position: absolute; right: 14px; bottom: 7px; color: rgba(16,35,30,.2); font: 500 3.3rem var(--serif); }
+    .player-info { padding: 18px 17px 20px; }
+    .player-info h3 { margin: 0 0 3px; font: 500 1.35rem var(--serif); }
+    .player-info .position { color: #78916b; font-size: .65rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .player-info p { margin: 12px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.6; }
+    .small-note { margin: 20px 0 0; color: var(--muted); font-size: .75rem; }
+
+    /* Rules */
+    .rules { background: #e9eee5; }
+    .rules-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+    .rules-aside { padding: 34px; color: white; background: var(--green-dark); }
+    .rules-aside .big-90 { color: var(--green); font: 500 clamp(5rem, 9vw, 8rem)/.9 var(--serif); letter-spacing: -.08em; }
+    .rules-aside h3 { max-width: 260px; margin: 18px 0 12px; font: 500 1.9rem/1.1 var(--serif); }
+    .rules-aside p { margin: 0; color: rgba(255,255,255,.63); font-size: .86rem; }
+    .rules-aside .rule-label { display: block; margin-top: 45px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.2); color: var(--green); font-size: .66rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+    .rule-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+    .rule { display: flex; gap: 15px; padding: 21px 0; border-bottom: 1px solid rgba(16,35,30,.13); }
+    .rule-icon { flex-shrink: 0; display: grid; place-items: center; width: 37px; height: 37px; background: rgba(109,150,84,.13); color: #47713e; }
+    .rule-icon svg { width: 19px; height: 19px; }
+    .rule h4 { margin: 0 0 5px; font-size: .9rem; }
+    .rule p { margin: 0; color: var(--muted); font-size: .78rem; }
+
+    /* Benefits */
+    .benefits { background: white; }
+    .benefit-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .benefit { min-height: 220px; padding: 25px 20px; background: white; transition: background .2s; }
+    .benefit:hover { background: #f2f7e9; }
+    .benefit-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 27px; background: #e9f2df; color: #426e39; }
+    .benefit-icon svg { width: 23px; height: 23px; }
+    .benefit h3 { margin: 0 0 8px; font: 500 1.25rem var(--serif); }
+    .benefit p { margin: 0; color: var(--muted); font-size: .78rem; }
+
+    /* Message / Footer */
+    .message { position: relative; overflow: hidden; padding: 104px 0 110px; color: white; background: linear-gradient(115deg, #0c2a21, #173f2c); text-align: center; }
+    .message::before { content: 'ĐAM MÊ'; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: rgba(255,255,255,.035); font-size: clamp(6rem, 16vw, 14rem); font-weight: 950; letter-spacing: -.08em; }
+    .message .container { position: relative; z-index: 1; }
+    .message .eyebrow { color: var(--green); }
+    .message h2 { max-width: 850px; margin: 20px auto 22px; font: 500 clamp(2.7rem, 5.5vw, 5rem)/1.02 var(--serif); letter-spacing: -.055em; }
+    .message h2 em { color: var(--green); }
+    .message p { max-width: 670px; margin: 0 auto 29px; color: rgba(255,255,255,.65); }
+    .message .btn { margin-top: 5px; }
+    footer { padding: 29px 0; background: #04120f; color: rgba(255,255,255,.51); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-brand { color: white; font-size: .75rem; font-weight: 900; letter-spacing: .14em; }
+    .footer-inner p { margin: 0; font-size: .7rem; }
+    .back-top { color: var(--green); font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+
+    @media (max-width: 1000px) {
+      .nav-cta { display: none; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .69rem; }
+      .players-grid { grid-template-columns: repeat(3, 1fr); }
+      .player-visual { min-height: 235px; }
+      .benefit-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(calc(100% - 34px), 560px); }
+      .hero > .container { width: min(calc(100% - 34px), 560px); flex: 0 0 auto; }
+      .topline .container { min-height: 30px; font-size: .58rem; }
+      .topline .topline-right { display: none; }
+      .nav-wrap { min-height: 67px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 67px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 9px 24px 18px; background: #071b17; border-top: 1px solid rgba(255,255,255,.1); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: .8rem; }
+      .nav-links a::after { display: none; }
+      .hero { min-height: unset; }
+      .hero-grid { grid-template-columns: 1fr; gap: 0; padding: 75px 0 80px; }
+      .hero h1 { font-size: clamp(3.7rem, 15vw, 5.7rem); }
+      .hero-copy > p { font-size: .93rem; }
+      .hero-art { min-height: 310px; margin-top: 15px; }
+      .hero-art .orbit { width: 270px; }
+      .hero-ball { width: 230px; }
+      .hero-tag { right: 4%; bottom: 2%; }
+      .hero-note { bottom: 18px; font-size: .55rem; }
+      .section { padding: 76px 0; }
+      .section-head { display: block; margin-bottom: 32px; }
+      .section-head p { margin-top: 17px; }
+      .intro-layout, .history-grid, .rules-layout { grid-template-columns: 1fr; gap: 36px; }
+      .intro-visual { min-height: 330px; }
+      .history-side { position: static; }
+      .tournament-grid { grid-template-columns: 1fr; }
+      .tournament-card { min-height: 305px; }
+      .players-grid { grid-template-columns: repeat(2, 1fr); }
+      .player-visual { min-height: 190px; }
+      .player-silhouette { height: 155px; }
+      .rule-list { grid-template-columns: 1fr; }
+      .rules-aside { padding: 28px; }
+      .rules-aside .rule-label { margin-top: 30px; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .benefit { min-height: 205px; padding: 21px 17px; }
+      .message { padding: 78px 0 84px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 390px) {
+      .players-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .player-info { padding: 14px 12px 16px; }
+      .player-info h3 { font-size: 1.14rem; }
+      .benefit-grid { grid-template-columns: 1fr 1fr; }
+      .intro-stats { gap: 8px; }
+      .stat strong { font-size: 1.65rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    /* Hiển thị tiếng Việt rõ ràng: tránh giãn/kẹt dấu khi trình duyệt thay font */
+    .hero h1,
+    .section-head h2,
+    .intro-copy h2,
+    .history-side h2,
+    .message h2 {
+      letter-spacing: 0 !important;
+      word-spacing: 0 !important;
+      font-kerning: normal;
+      font-feature-settings: "kern" 1, "liga" 1;
+      text-align: left;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .history-side h2 { line-height: 1.04; }
+
+    /* Ảnh chân dung cầu thủ */
+    .players-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .player-visual {
+      position: relative;
+      height: 290px;
+      min-height: 0;
+      display: block;
+      overflow: hidden;
+      background: #dce8d5;
+    }
+    .player-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      transition: transform .55s ease;
+    }
+    .player-card:hover .player-photo { transform: scale(1.045); }
+    .player-card:nth-child(2) .player-photo { object-position: center 15%; }
+    .player-card:nth-child(3) .player-photo { object-position: 64% 22%; }
+    .player-visual::after {
+      content: '';
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(transparent, rgba(5, 20, 15, .2));
+      pointer-events: none;
+    }
+    .player-country { z-index: 2; }
+    .player-index { z-index: 2; color: rgba(255,255,255,.74); }
+    .player-info .position { letter-spacing: .04em; }
+    .photo-credit a { color: #47713e; text-decoration: underline; text-underline-offset: 2px; }
+    .photo-credit { line-height: 1.8; }
+
+    @media (max-width: 1000px) {
+      .players-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .player-visual { height: 310px; }
+    }
+    @media (max-width: 760px) {
+      .players-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .player-visual { height: 255px; }
+    }
+    @media (max-width: 390px) {
+      .players-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .player-visual { height: 205px; }
+      .player-info .position { font-size: .58rem; }
+    }
+
+
+    /* SỬA DỨT ĐIỂM LỖI KHOẢNG CÁCH VÀ DẤU TIẾNG VIỆT
+       Dùng Arial/Tahoma có bộ ký tự tiếng Việt đầy đủ; không ép giãn chữ trong tiêu đề. */
+    html, body, body * { font-family: Arial, Tahoma, "Segoe UI", sans-serif; }
+    h1, h2, h3, h4, h5, h6,
+    .hero h1, .section-head h2, .intro-copy h2, .history-side h2,
+    .time-item h3, .tournament-card h3, .player-info h3,
+    .rules-aside h3, .benefit h3, .message h2,
+    .stat strong, .rules-aside .big-90 {
+      font-family: Arial, Tahoma, "Segoe UI", sans-serif !important;
+      letter-spacing: normal !important;
+      word-spacing: normal !important;
+      font-kerning: auto !important;
+      font-feature-settings: normal !important;
+      font-weight: 800;
+      text-align: left;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    p, li, a, button, span, strong, small, label, input {
+      word-spacing: normal;
+      font-kerning: auto;
+    }
+    .hero h1 { line-height: .98; }
+    .history-side h2 { line-height: 1.08; }
+    .section-head h2, .intro-copy h2, .message h2 { line-height: 1.12; }
+    .detail-modal, .detail-modal * { font-family: Arial, Tahoma, "Segoe UI", sans-serif !important; }
+
+    /* Bố cục hero theo cột, tránh co hẹp nội dung trên màn hình nhỏ */
+    .hero { flex-direction: column; }
+    .hero-note { left: max(17px, calc((100vw - 1160px) / 2)); }
+
+    /* Danh mục tương tác */
+    .directory-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0 0 24px; }
+    .directory-tools input { flex:1; min-width:0; min-height:48px; border:1px solid rgba(16,35,30,.18); background:#fff; padding:0 16px; color:var(--ink); font:inherit; outline:none; }
+    .directory-tools input:focus { border-color:#6d9654; box-shadow:0 0 0 3px rgba(109,150,84,.13); }
+    .directory-count { color:var(--muted); font-size:.8rem; white-space:nowrap; }
+    .player-card, .directory-card { width:100%; padding:0; text-align:left; color:inherit; font:inherit; cursor:pointer; border-radius:0; }
+    .player-card:focus-visible, .directory-card:focus-visible { outline:3px solid #6d9654; outline-offset:3px; }
+    .player-info .read-more { display:inline-flex; margin-top:14px; color:#47713e; font-size:.76rem; font-weight:800; }
+    .player-info .read-more::after { content:' →'; margin-left:5px; }
+    .player-card .player-visual { height:290px; }
+    .player-info { min-height:174px; }
+    .directory-section { padding:96px 0; background:#e9eee5; }
+    .directory-section.alt { background:#f5f7f2; }
+    .directory-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .directory-card { display:flex; gap:14px; align-items:center; min-height:116px; padding:18px; border:1px solid var(--line); background:#fff; transition:transform .2s, box-shadow .2s, border-color .2s; }
+    .directory-card:hover { transform:translateY(-4px); border-color:rgba(109,150,84,.5); box-shadow:var(--shadow); }
+    .directory-mark { flex:0 0 56px; width:56px; height:56px; display:grid; place-items:center; color:#fff; background:linear-gradient(145deg,#1d5b43,#0c2a21); font-size:1rem; font-weight:900; letter-spacing:0; }
+    .team-mark { font-size:1.8rem; background:#fff; border:1px solid var(--line); }
+    .directory-info strong { display:block; margin:0 0 5px; font-size:.95rem; font-weight:800; }
+    .directory-info span { display:block; color:var(--muted); font-size:.72rem; line-height:1.45; }
+    .directory-info small { display:block; margin-top:7px; color:#47713e; font-size:.68rem; font-weight:800; }
+    .directory-section .section-head { margin-bottom:32px; }
+    .competition-extra { margin-top:18px; }
+    .detail-backdrop { position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:22px; background:rgba(3,14,11,.78); backdrop-filter:blur(8px); }
+    .detail-backdrop.open { display:flex; }
+    .detail-modal { position:relative; width:min(680px,100%); max-height:min(86vh,850px); overflow:auto; padding:34px; color:var(--ink); background:#f7f8f3; box-shadow:0 28px 90px rgba(0,0,0,.35); }
+    .detail-close { position:absolute; top:13px; right:13px; width:40px; height:40px; border:1px solid rgba(16,35,30,.18); background:#fff; color:var(--ink); font-size:1.45rem; cursor:pointer; }
+    .detail-kicker { display:block; margin:0 48px 10px 0; color:#6d9654; font-size:.72rem; font-weight:900; letter-spacing:.08em; }
+    .detail-modal h2 { margin:0 44px 12px 0; font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.08; }
+    .detail-meta { margin:0 0 22px; color:#60736a; font-size:.88rem; font-weight:700; }
+    .detail-body { color:#41534b; font-size:.96rem; line-height:1.75; }
+    .detail-body p { margin:0 0 14px; }
+    .detail-body h3 { margin:22px 0 9px; font-size:1rem; }
+    .detail-body ul { margin:0; padding-left:20px; }
+    .detail-body li { margin:6px 0; }
+    .empty-state { grid-column:1/-1; padding:28px; border:1px dashed rgba(16,35,30,.25); color:var(--muted); text-align:center; }
+    @media (max-width:1000px) {
+      .directory-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:760px) {
+      .directory-tools { align-items:stretch; flex-direction:column; }
+      .directory-grid { grid-template-columns:1fr; }
+      .player-card .player-visual { height:250px; }
+      .directory-section { padding:72px 0; }
+      .detail-modal { padding:28px 22px; }
+    }
+
+
+    /* Huy hiệu câu lạc bộ và cờ đội tuyển */
+    .club-mark {
+      position:relative;
+      flex:0 0 82px;
+      width:82px;
+      height:82px;
+      display:grid;
+      place-items:center;
+      overflow:visible;
+      border:1px solid rgba(16,35,30,.10);
+      border-radius:12px;
+      background:#fff;
+      color:#1d5b43;
+      font-size:.9rem;
+      font-weight:900;
+      letter-spacing:0;
+    }
+    .club-mark img {
+      position:relative;
+      z-index:3;
+      display:block;
+      width:100%;
+      height:100%;
+      max-width:100%;
+      max-height:100%;
+      padding:8px;
+      object-fit:contain;
+      object-position:center center;
+      background:#fff;
+      border-radius:12px;
+      opacity:0;
+      transition:opacity .22s ease;
+    }
+    .club-mark .logo-fallback {
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      z-index:2;
+      color:#fff;
+      background:linear-gradient(145deg,#1d5b43,#0c2a21);
+      transition:opacity .22s ease;
+    }
+    .club-mark.logo-loaded img { opacity:1; }
+    .club-mark.logo-loaded .logo-fallback { opacity:0; }
+    .club-mark.logo-missing img { display:none; }
+    /* Huy hiệu dáng đứng như AC Milan có khung cao hơn để không bị khuất. */
+    .club-mark.club-mark-ac-milan { flex-basis:78px; width:78px; height:90px; }
+    .club-mark.club-mark-ac-milan img { padding:3px 10px; object-fit:contain; }
+    .club-mark.club-mark-liverpool img,
+    .club-mark.club-mark-tottenham-hotspur img { padding:5px 9px; object-fit:contain; }
+    .team-mark {
+      flex:0 0 66px;
+      width:66px;
+      height:46px;
+      padding:0;
+      overflow:hidden;
+      border:1px solid rgba(16,35,30,.18);
+      border-radius:5px;
+      background:#fff;
+      box-shadow:0 3px 9px rgba(16,35,30,.08);
+    }
+    .team-flag-svg { display:block; width:100%; height:100%; }
+    .directory-card:hover .club-mark,
+    .directory-card:hover .team-mark { transform:scale(1.035); }
+    .club-mark, .team-mark { transition:transform .2s ease; }
+    .directory-info { min-width:0; }
+    .directory-info strong { line-height:1.25; }
+    .logo-credit a { color:#47713e; text-decoration:underline; text-underline-offset:2px; }
+    @media (max-width:760px) {
+      .club-mark { flex-basis:72px; width:72px; height:72px; }
+      .club-mark.club-mark-ac-milan { flex-basis:70px; width:70px; height:82px; }
+      .team-mark { flex-basis:60px; width:60px; height:42px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="container">
+      <span><strong>THẾ GIỚI BÓNG ĐÁ</strong> &nbsp;·&nbsp; Khám phá môn thể thao vua</span>
+      <span class="topline-right">Kiến thức · Cảm hứng · Đam mê</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Thế giới bóng đá - Trang chủ">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m12 6.5 3.4 2.4-1.3 4h-4.2l-1.3-4L12 6.5Z M8.6 8.9l-3.3.6m4.6 3.4-2.2 4.1m5.8-4.1 2.2 4.1m-.9-8.1 3.3.6M7.7 17l-1.2 1.7m10-1.7 1.2 1.7"/></svg>
+        </span>
+        <span class="brand-name">THẾ GIỚI BÓNG ĐÁ<span>KIẾN THỨC · CẢM HỨNG · ĐAM MÊ</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Điều hướng chính">
+        <a href="#home">Trang chủ</a>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#lich-su">Lịch sử</a>
+        <a href="#giai-dau">Giải đấu</a>
+        <a href="#cau-thu">Cầu thủ</a>
+        <a href="#cau-lac-bo">Câu lạc bộ</a>
+        <a href="#doi-tuyen">Đội tuyển</a>
+        <a href="#luat-choi">Luật chơi</a>
+        <a href="#loi-ich">Lợi ích</a>
+      </nav>
+      <a class="nav-cta" href="#chia-se">GÓC CHIA SẺ ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Hơn cả một môn thể thao</span>
+          <h1>BÓNG<br><em>ĐÁ</em><br>ĐAM MÊ.</h1>
+          <p>Từ những đường chuyền tinh tế đến khoảnh khắc vỡ òa khi bóng chạm lưới — bóng đá kết nối hàng triệu trái tim bằng niềm đam mê không biên giới.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#gioi-thieu">Khám phá bóng đá <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="text-link" href="#lich-su">Hành trình bóng đá <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Minh họa quả bóng đá">
+          <div class="orbit"></div>
+          <svg class="hero-ball" viewBox="0 0 300 300" role="img" aria-label="Quả bóng đá cách điệu">
+            <defs>
+              <radialGradient id="ballShade" cx="34%" cy="25%" r="78%"><stop offset="0" stop-color="#fff"/><stop offset=".72" stop-color="#e9eee7"/><stop offset="1" stop-color="#aeb9af"/></radialGradient>
+              <clipPath id="ballClip"><circle cx="150" cy="150" r="137"/></clipPath>
+            </defs>
+            <circle cx="150" cy="150" r="139" fill="#06130f" opacity=".3"/>
+            <circle cx="150" cy="145" r="137" fill="url(#ballShade)" stroke="#f7fff4" stroke-width="3"/>
+            <g clip-path="url(#ballClip)" fill="#13231d" stroke="#13231d" stroke-width="2" stroke-linejoin="round">
+              <path d="m150 91 38 28-14 45h-48l-14-45 38-28Z"/>
+              <path d="m150 91 8-62 51-20 35 30-20 50-36 30-38-28Z" opacity=".92"/>
+              <path d="m112 119-54-28-43 28 5 54 52 24 48-33 14-45Z" opacity=".92"/>
+              <path d="m174 164 14-45 36-30 54 25 10 52-42 38-58-2-14-38Z" opacity=".92"/>
+              <path d="m126 164-48 33-3 58 47 28 45-24 7-50-14-45h-34Z" opacity=".92"/>
+              <path d="m174 164 14 38-7 50 43 26 45-27-3-67-42-38-50 18Z" opacity=".92"/>
+              <path d="m150 91-38 28-54-28 20-50 54-22 76-10-50 20-8 62Z" opacity=".9"/>
+            </g>
+            <circle cx="150" cy="145" r="137" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2"/>
+            <path d="M67 57c31-29 72-42 111-34" fill="none" stroke="white" stroke-opacity=".8" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+          <div class="hero-tag"><strong>90'</strong><span>Phút của cảm xúc</span></div>
+        </div>
+      </div>
+      <div class="container"><div class="hero-note">01 / 09 &nbsp; — &nbsp; Chào mừng đến với thế giới bóng đá</div></div>
+    </section>
+
+    <section class="section intro" id="gioi-thieu">
+      <div class="container intro-layout">
+        <div class="intro-visual" aria-label="Sơ đồ sân bóng đá minh họa">
+          <div class="pitch"><span class="pitch-box left"></span><span class="pitch-box right"></span><span class="pitch-dot"></span></div>
+          <svg class="pitch-ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#f7f8f0" stroke="#243a2e" stroke-width="2"/><path d="m50 29 14 10-5 17H41l-5-17 14-10Zm0 0 2-20 18-7 15 13-7 19-14 5-14-10ZM36 39 17 29 2 42l4 19 18 8 17-13-5-17Zm23 17 5-17 14-5 19 12 1 20-16 13-21-1-7-22ZM41 56 24 69l-1 20 17 10 16-9 3-17-5-17H41Zm18 0 5 22-3 17 16 9 16-10-1-26-15-13-18 1Z" fill="#182b22"/></svg>
+          <div class="visual-caption">Sân cỏ kết nối mọi người</div>
+        </div>
+        <div class="intro-copy">
+          <span class="eyebrow">01 / Giới thiệu bóng đá</span>
+          <h2>Một trái bóng.<br>Hàng triệu đam mê.</h2>
+          <p>Bóng đá được mệnh danh là <strong>môn thể thao vua</strong>, được yêu thích ở hầu hết các quốc gia trên thế giới. Đây là môn thể thao đồng đội, trong đó hai đội thi đấu với nhau, mỗi đội thường có 11 cầu thủ trên sân.</p>
+          <p>Mục tiêu của trận đấu là đưa bóng vào khung thành đối phương để ghi bàn. Mỗi pha phối hợp, mỗi tình huống tranh chấp và mỗi bàn thắng đều tạo nên sức hấp dẫn riêng của môn thể thao này.</p>
+          <p>Không chỉ mang đến những trận đấu kịch tính, bóng đá còn giúp rèn luyện sức khỏe, tinh thần đồng đội và ý chí quyết tâm.</p>
+          <div class="intro-stats">
+            <div class="stat"><strong>11</strong><span>Cầu thủ mỗi đội</span></div>
+            <div class="stat"><strong>90'</strong><span>Thời gian thi đấu chính thức</span></div>
+            <div class="stat"><strong>1</strong><span>Mục tiêu: ghi bàn</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section history" id="lich-su">
+      <div class="container history-grid">
+        <div class="history-side">
+          <span class="eyebrow">02 / Dòng chảy thời gian</span>
+          <h2>Từ sân cỏ nước Anh đến toàn thế giới.</h2>
+          <p>Bóng đá đã trải qua hành trình dài để trở thành môn thể thao có sức ảnh hưởng rộng khắp. Những cột mốc dưới đây đánh dấu bước phát triển quan trọng của bóng đá hiện đại.</p>
+          <div class="history-stamp">⚽ &nbsp; MỘT MÔN THỂ THAO KHÔNG BIÊN GIỚI</div>
+        </div>
+        <div class="timeline">
+          <article class="time-item">
+            <span class="year">THẾ KỶ XIX</span>
+            <h3>Những bước đầu của bóng đá hiện đại</h3>
+            <p>Nhiều hình thức chơi bóng đã xuất hiện từ trước đó. Tại Anh, bóng đá dần phát triển theo hướng có tổ chức và hình thành những quy tắc chung.</p>
+          </article>
+          <article class="time-item">
+            <span class="year">1863</span>
+            <h3>Luật chơi dần được thống nhất</h3>
+            <p>Hiệp hội Bóng đá Anh (The Football Association) được thành lập. Sự kiện này góp phần quan trọng vào việc định hình luật bóng đá hiện đại.</p>
+          </article>
+          <article class="time-item">
+            <span class="year">1930</span>
+            <h3>Kỳ Cúp bóng đá thế giới đầu tiên</h3>
+            <p>Giải vô địch bóng đá thế giới lần đầu tiên được tổ chức tại Uruguay, mở ra sân chơi quốc tế dành cho các đội tuyển quốc gia.</p>
+          </article>
+          <article class="time-item">
+            <span class="year">NGÀY NAY</span>
+            <h3>Môn thể thao toàn cầu</h3>
+            <p>Bóng đá hiện diện ở khắp nơi, từ sân chơi trường học, những giải đấu địa phương đến các sân vận động lớn với hàng triệu người hâm mộ theo dõi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tournaments" id="giai-dau">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">03 / Sân khấu đỉnh cao</span><h2>Những giải đấu làm nên lịch sử.</h2></div>
+          <p>Mỗi giải đấu mang một bản sắc riêng, nơi các đội bóng và cầu thủ cùng cạnh tranh để chạm đến vinh quang.</p>
+        </div>
+        <div class="tournament-grid">
+          <article class="tournament-card">
+            <div><span class="card-number">01</span><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/><path d="M10 2h4"/></svg></div></div>
+            <div><span class="card-kicker">Đội tuyển quốc gia</span><h3>Cúp bóng đá thế giới</h3><p>Giải vô địch bóng đá thế giới quy tụ các đội tuyển quốc gia xuất sắc. Giải đấu được tổ chức theo chu kỳ bốn năm một lần.</p><div class="tournament-foot"><span>Sân chơi toàn cầu</span><b>4 năm một lần</b></div></div>
+          </article>
+          <article class="tournament-card">
+            <div><span class="card-number">02</span><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/><path d="m12 6 1.3 2.2 2.5.5-1.8 1.8.3 2.5-2.3-1.1-2.3 1.1.3-2.5-1.8-1.8 2.5-.5L12 6Z"/></svg></div></div>
+            <div><span class="card-kicker">Cấp câu lạc bộ</span><h3>Giải vô địch các câu lạc bộ châu Âu</h3><p>Giải đấu danh giá của bóng đá châu Âu, nơi nhiều câu lạc bộ hàng đầu tranh tài và tạo nên những đêm bóng đá đáng nhớ.</p><div class="tournament-foot"><span>Đêm hội bóng đá châu Âu</span><b>Bóng đá câu lạc bộ</b></div></div>
+          </article>
+          <article class="tournament-card">
+            <div><span class="card-number">03</span><div class="trophy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4Zm0 2H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4"/><path d="M9 2h6"/></svg></div></div>
+            <div><span class="card-kicker">Giải vô địch quốc gia</span><h3>Giải Ngoại hạng Anh</h3><p>Giải bóng đá hàng đầu nước Anh, nổi bật bởi nhịp độ thi đấu cao, tính cạnh tranh và sự góp mặt của nhiều câu lạc bộ nổi tiếng.</p><div class="tournament-foot"><span>Bóng đá nước Anh</span><b>Giải đấu quốc nội</b></div></div>
+          </article>
+
+          <article class="tournament-card">
+            <div><span class="card-number">04</span><div class="trophy-icon">🏆</div></div>
+            <div><span class="card-kicker">Đội tuyển quốc gia · Châu Âu</span><h3>Giải vô địch châu Âu</h3><p>Giải đấu cấp đội tuyển của UEFA, nơi những đội tuyển hàng đầu châu Âu tranh tài theo chu kỳ bốn năm.</p><div class="tournament-foot"><span>EURO</span><b>Châu Âu</b></div></div>
+          </article>
+          <article class="tournament-card">
+            <div><span class="card-number">05</span><div class="trophy-icon">🌎</div></div>
+            <div><span class="card-kicker">Đội tuyển quốc gia · Nam Mỹ</span><h3>Copa América</h3><p>Giải vô địch bóng đá Nam Mỹ, gắn với những đội tuyển giàu truyền thống như Brazil, Argentina và Uruguay.</p><div class="tournament-foot"><span>Nam Mỹ</span><b>Đội tuyển</b></div></div>
+          </article>
+          <article class="tournament-card">
+            <div><span class="card-number">06</span><div class="trophy-icon">🌏</div></div>
+            <div><span class="card-kicker">Đội tuyển quốc gia · Châu Á</span><h3>Cúp bóng đá châu Á</h3><p>Giải đấu lớn nhất cấp đội tuyển nam của châu Á, quy tụ các đại diện xuất sắc của khu vực.</p><div class="tournament-foot"><span>AFC Asian Cup</span><b>Châu Á</b></div></div>
+          </article>
+          <article class="tournament-card competition-extra">
+            <div><span class="card-number">07</span><div class="trophy-icon">🌐</div></div>
+            <div><span class="card-kicker">Cấp câu lạc bộ · Toàn cầu</span><h3>Giải vô địch thế giới các câu lạc bộ</h3><p>Nơi những câu lạc bộ đại diện cho các châu lục gặp nhau để tranh danh hiệu ở cấp độ quốc tế.</p><div class="tournament-foot"><span>Cấp câu lạc bộ</span><b>Toàn cầu</b></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section players" id="cau-thu">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">04 / Những biểu tượng sân cỏ</span><h2>Những cái tên truyền cảm hứng.</h2></div>
+          <p>Tài năng, bản lĩnh và dấu ấn riêng đã giúp những cầu thủ này trở thành biểu tượng trong lòng người hâm mộ.</p>
+        </div>
+
+        <div class="directory-tools">
+          <input id="playerSearch" type="search" placeholder="Tìm theo tên, quốc gia hoặc vị trí..." aria-label="Tìm cầu thủ">
+          <span class="directory-count" id="playerCount">11 hồ sơ cầu thủ</span>
+        </div>
+        <div class="players-grid" id="playersGrid" aria-live="polite"></div>
+        <p class="small-note">Chọn một cầu thủ để xem tiểu sử, phong cách thi đấu, những câu lạc bộ từng khoác áo và dấu ấn nổi bật.</p>
+        <p class="small-note photo-credit">Ảnh tư liệu tham khảo: <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://www.arageek.com/bio/ronaldinho" target="_blank" rel="noopener">Arageek</a>, <a href="https://www.playmakerstats.com/player/kylian-mbappe/394508" target="_blank" rel="noopener">Zerozero / Playmakerstats</a> và <a href="https://www.thenationalnews.com/sport/2022/06/13/erling-haaland-speaks-for-first-time-as-a-manchester-city-player/" target="_blank" rel="noopener">The National</a>. Ảnh cần kết nối Internet để tải.</p>
+      </div>
+    </section>
+
+
+    <section class="directory-section" id="cau-lac-bo">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">05 / Những mái nhà bóng đá</span><h2>Các câu lạc bộ lớn trên thế giới.</h2></div>
+          <p>Từ những đội bóng giàu truyền thống đến các thế lực hiện đại, mỗi câu lạc bộ đều có bản sắc, lịch sử và cộng đồng người hâm mộ riêng.</p>
+        </div>
+        <div class="directory-tools">
+          <input id="clubSearch" type="search" placeholder="Tìm câu lạc bộ theo tên, quốc gia hoặc giải đấu..." aria-label="Tìm câu lạc bộ">
+          <span class="directory-count" id="clubCount">33 câu lạc bộ</span>
+        </div>
+        <div class="directory-grid" id="clubsGrid" aria-live="polite"></div>
+        <p class="small-note">Nhấn vào từng câu lạc bộ để đọc thông tin khái quát, sân nhà và những cầu thủ tiêu biểu từng khoác áo.</p>
+        <p class="small-note logo-credit">Logo câu lạc bộ được tải từ kho huy hiệu bóng đá của ESPN. Ảnh cần kết nối Internet để hiển thị; nếu ảnh lỗi, tên viết tắt vẫn được giữ làm hình thay thế.</p>
+      </div>
+    </section>
+
+    <section class="directory-section alt" id="doi-tuyen">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">06 / Màu cờ sắc áo</span><h2>Những đội tuyển quốc gia đáng chú ý.</h2></div>
+          <p>Bóng đá cấp đội tuyển mang đến cảm xúc đặc biệt bởi mỗi cầu thủ thi đấu với màu áo và niềm tự hào của đất nước mình.</p>
+        </div>
+        <div class="directory-grid" id="teamsGrid"></div>
+        <p class="small-note">Danh sách mang tính giới thiệu, không phải bảng xếp hạng sức mạnh hay thứ hạng hiện tại.</p>
+      </div>
+    </section>
+    <section class="section rules" id="luat-choi">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">07 / Hiểu trận đấu</span><h2>Luật chơi cơ bản.</h2></div>
+          <p>Nắm những nguyên tắc nền tảng sẽ giúp bạn theo dõi trận đấu dễ dàng hơn và hiểu vì sao trọng tài đưa ra quyết định.</p>
+        </div>
+        <div class="rules-layout">
+          <aside class="rules-aside">
+            <div class="big-90">90'</div>
+            <h3>Hai hiệp đấu. Một cuộc so tài.</h3>
+            <p>Một trận đấu thông thường có hai hiệp, mỗi hiệp 45 phút. Trọng tài có thể cộng thêm thời gian bù giờ cho những khoảng thời gian trận đấu bị gián đoạn.</p>
+            <span class="rule-label">Những luật chơi cơ bản</span>
+          </aside>
+          <div class="rule-list">
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m12 7 3 2-1 4h-4l-1-4 3-2Z"/></svg></span><div><h4>Số lượng cầu thủ</h4><p>Mỗi đội thường có 11 cầu thủ trên sân, bao gồm một thủ môn.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h14v16H5zM5 9h14M5 15h14"/><path d="M9 4v16m6-16v16"/></svg></span><div><h4>Mục tiêu ghi bàn</h4><p>Đưa bóng hoàn toàn qua vạch cầu môn, giữa hai cột dọc và dưới xà ngang.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4c1 3 1 5 0 7l-2 4 3 5h8l3-5-2-4c-1-2-1-4 0-7"/><path d="M9 9h6"/></svg></span><div><h4>Không dùng tay chơi bóng</h4><p>Cầu thủ không được cố ý dùng tay hoặc cánh tay chơi bóng; thủ môn có ngoại lệ trong khu vực phạt đền của đội mình.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10v18H7zM10 7h4m-4 4h4m-4 4h4"/></svg></span><div><h4>Thẻ vàng và thẻ đỏ</h4><p>Thẻ vàng là cảnh cáo; thẻ đỏ khiến cầu thủ bị truất quyền thi đấu.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 18 6-6 4 3 6-9"/><path d="M14 6h6v6"/></svg></span><div><h4>Đội chiến thắng</h4><p>Đội ghi nhiều bàn thắng hơn khi trận đấu kết thúc sẽ giành chiến thắng; nếu bằng nhau, kết quả có thể là hòa.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Lỗi và đá phạt</h4><p>Các hành vi phạm luật có thể bị xử phạt bằng đá phạt trực tiếp, gián tiếp hoặc phạt đền tùy tình huống.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4zM8 5v14m8-14v14M4 12h16"/><circle cx="12" cy="12" r="2"/></svg></span><div><h4>Luật việt vị</h4><p>Việt vị được xác định theo vị trí và hành động tham gia tình huống của cầu thủ khi đồng đội chuyền bóng.</p></div></article>
+            <article class="rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span><div><h4>Trọng tài điều hành</h4><p>Trọng tài chính điều khiển trận đấu và đảm bảo các quy định được thực hiện công bằng.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="loi-ich">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">08 / Giá trị ngoài sân cỏ</span><h2>Bóng đá mang lại nhiều hơn bạn nghĩ.</h2></div>
+          <p>Mỗi buổi tập hay trận đấu đều là cơ hội để chúng ta phát triển cả thể chất lẫn những kỹ năng cần thiết trong cuộc sống.</p>
+        </div>
+        <div class="benefit-grid">
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="M8 12h2l1.2-3 2 6 1.2-3H17"/></svg></span><h3>Sức khỏe</h3><p>Hỗ trợ tim mạch, sức bền, khả năng vận động và sự linh hoạt.</p></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.5-6 6-6s6 2 6 6m0-5c3.5-.5 6 1.4 6 5"/></svg></span><h3>Đoàn kết</h3><p>Khuyến khích tinh thần hợp tác, hỗ trợ và tin tưởng đồng đội.</p></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 7v5c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V7l-8-4Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></span><h3>Kỷ luật</h3><p>Rèn luyện tính kiên trì, tinh thần trách nhiệm và sự tự giác.</p></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3-.5L4 21l1.5-4A7.3 7.3 0 0 1 4 12c0-4.2 3.6-7.5 8-7.5s8 2.8 8 7Z"/><path d="M8 12h8"/></svg></span><h3>Giải tỏa</h3><p>Giúp thư giãn tinh thần và giảm căng thẳng sau giờ học tập, làm việc.</p></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5m4-1v4l3 2"/></svg></span><h3>Kết nối</h3><p>Tạo cơ hội giao lưu, kết bạn và kết nối mọi người ở nhiều nơi.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="message" id="chia-se">
+      <div class="container">
+        <span class="eyebrow">09 / Góc chia sẻ — Thông điệp</span>
+        <h2>Thắng không kiêu.<br>Thua không nản.<br><em>Đam mê không bỏ cuộc.</em></h2>
+        <p>Bóng đá không chỉ là một môn thể thao mà còn là niềm đam mê, sự đoàn kết và tinh thần không bỏ cuộc. Dù thắng hay thua, điều quan trọng nhất vẫn là tinh thần thi đấu hết mình và tình yêu dành cho trái bóng tròn.</p>
+        <a class="btn" href="#home">Lan tỏa tình yêu bóng đá <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div class="detail-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle" aria-hidden="true">
+    <div class="detail-modal">
+      <button class="detail-close" id="detailClose" type="button" aria-label="Đóng cửa sổ">×</button>
+      <span class="detail-kicker" id="detailKicker">HỒ SƠ</span>
+      <h2 id="detailTitle"></h2>
+      <p class="detail-meta" id="detailMeta"></p>
+      <div class="detail-body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <span class="footer-brand">THẾ GIỚI BÓNG ĐÁ</span>
+      <p>© 2026 · Trang chia sẻ kiến thức và tình yêu bóng đá.</p>
+      <a class="back-top" href="#home">Về đầu trang ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Menu thu gọn dành cho màn hình điện thoại.
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Mở menu');
+      });
+    });
+
+    // Đánh dấu mục đang xem trên thanh điều hướng.
+    const sections = document.querySelectorAll('main section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(section => observer.observe(section));
+
+
+    // Dữ liệu hồ sơ cầu thủ, câu lạc bộ và đội tuyển.
+    const playerData = [{"name": "Cristiano Ronaldo", "nation": "Bồ Đào Nha", "number": "07", "position": "Tiền đạo", "style": "Sức mạnh · Tốc độ · Dứt điểm", "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Cristiano_Ronaldo_2018_%284x5_cropped%29.jpg", "alt": "Cristiano Ronaldo trong màu áo đội tuyển Bồ Đào Nha", "meta": "Sinh năm 1985 · Bồ Đào Nha", "bio": "Cristiano Ronaldo sinh ngày 5 tháng 2 năm 1985 tại Madeira, Bồ Đào Nha. Anh nổi bật nhờ thể chất, khả năng bật nhảy, tốc độ, kỹ năng không chiến và sự đa dạng trong dứt điểm. Từ một cầu thủ chạy cánh giàu kỹ thuật, Ronaldo phát triển thành tiền đạo săn bàn hàng đầu.", "clubs": ["Sporting CP", "Manchester United", "Real Madrid", "Juventus", "Al Nassr"], "highlights": ["Vô địch EURO 2016 cùng đội tuyển Bồ Đào Nha.", "Năm lần giành Quả bóng vàng.", "Nhiều lần vô địch các giải đấu cấp câu lạc bộ ở Anh, Tây Ban Nha và Ý."]}, {"name": "Lionel Messi", "nation": "Argentina", "number": "10", "position": "Tiền đạo / Hộ công", "style": "Rê bóng · Kiến tạo · Nhãn quan", "image": "https://upload.wikimedia.org/wikipedia/commons/f/f0/LionelMessi.jpg", "alt": "Lionel Messi trong màu áo Barcelona", "meta": "Sinh năm 1987 · Argentina", "bio": "Lionel Messi sinh ngày 24 tháng 6 năm 1987 tại Rosario, Argentina. Anh được biết đến với khả năng kiểm soát bóng sát chân, đổi hướng nhanh, chuyền bóng tinh tế và đọc trận đấu xuất sắc. Messi dành phần lớn giai đoạn đầu sự nghiệp chuyên nghiệp tại Barcelona trước khi thi đấu cho Paris Saint-Germain và Inter Miami.", "clubs": ["Barcelona", "Paris Saint-Germain", "Inter Miami"], "highlights": ["Vô địch World Cup 2022 cùng Argentina.", "Vô địch Copa América 2021 và 2024.", "Tám lần giành Quả bóng vàng."]}, {"name": "Neymar", "nation": "Brazil", "number": "11", "position": "Tiền đạo / Chạy cánh", "style": "Kỹ thuật · Ngẫu hứng · Đột phá", "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Neymar_2011_FIFA_Club_World_Cup_Final.jpg", "alt": "Neymar thi đấu tại giải vô địch thế giới các câu lạc bộ năm 2011", "meta": "Sinh năm 1992 · Brazil", "bio": "Neymar da Silva Santos Júnior sinh ngày 5 tháng 2 năm 1992 tại Brazil. Anh nổi bật với kỹ thuật cá nhân, khả năng rê bóng trong không gian hẹp, phối hợp một chạm và tạo đột biến ở khu vực tấn công. Neymar trưởng thành từ Santos và từng tạo dấu ấn lớn tại Barcelona cùng Paris Saint-Germain.", "clubs": ["Santos", "Barcelona", "Paris Saint-Germain", "Al Hilal"], "highlights": ["Vô địch Champions League 2015 cùng Barcelona.", "Vô địch Cúp Liên đoàn các châu lục 2013 cùng Brazil.", "Là một trong những gương mặt tiêu biểu của bóng đá Brazil thế hệ hiện đại."]}, {"name": "Kaká", "nation": "Brazil", "number": "22", "position": "Tiền vệ tấn công", "style": "Tăng tốc · Chuyền bóng · Sáng tạo", "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Kaka_portrait%2C_February_2009.jpg", "alt": "Chân dung Kaká, cựu tiền vệ người Brazil", "meta": "Sinh năm 1982 · Brazil", "bio": "Kaká sinh ngày 22 tháng 4 năm 1982 tại Brasília, Brazil. Anh chơi ở vị trí tiền vệ tấn công và nổi tiếng với những pha dẫn bóng tốc độ, khả năng xâm nhập tuyến hai cùng các đường chuyền mở ra cơ hội. Giai đoạn thành công nhất của Kaká gắn liền với AC Milan.", "clubs": ["São Paulo", "AC Milan", "Real Madrid", "Orlando City"], "highlights": ["Giành Quả bóng vàng năm 2007.", "Vô địch World Cup 2002 cùng Brazil.", "Vô địch Champions League 2007 cùng AC Milan."]}, {"name": "Pelé", "nation": "Brazil", "number": "10", "position": "Tiền đạo", "style": "Ghi bàn · Di chuyển · Toàn diện", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pele_by_John_Mathew_Smith.jpg/500px-Pele_by_John_Mathew_Smith.jpg", "alt": "Chân dung Pelé, huyền thoại bóng đá Brazil", "meta": "1940–2022 · Brazil", "bio": "Pelé, tên khai sinh Edson Arantes do Nascimento, là một trong những biểu tượng lớn nhất của bóng đá thế giới. Ông thi đấu nổi bật trong màu áo Santos và đội tuyển Brazil, được nhớ đến nhờ khả năng ghi bàn, kỹ thuật và sự toàn diện trong vai trò tiền đạo.", "clubs": ["Santos", "New York Cosmos"], "highlights": ["Vô địch World Cup cùng Brazil vào các năm 1958, 1962 và 1970.", "Là cầu thủ duy nhất từng ba lần vô địch World Cup với tư cách cầu thủ.", "Trở thành biểu tượng thể thao toàn cầu của Brazil."]}, {"name": "Diego Maradona", "nation": "Argentina", "number": "10", "position": "Tiền vệ tấn công", "style": "Rê bóng · Sáng tạo · Bản lĩnh", "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/DiegoMaradona.jpg", "alt": "Diego Maradona trong trang phục đội tuyển Argentina", "meta": "1960–2020 · Argentina", "bio": "Diego Armando Maradona là huyền thoại bóng đá Argentina. Ông sở hữu kỹ thuật rê bóng xuất sắc, khả năng giữ bóng trong áp lực và tầm ảnh hưởng lớn đến lối chơi của toàn đội. Maradona để lại dấu ấn sâu đậm tại Napoli và đội tuyển Argentina.", "clubs": ["Boca Juniors", "Barcelona", "Napoli", "Sevilla"], "highlights": ["Đội trưởng Argentina vô địch World Cup 1986.", "Đưa Napoli đến những danh hiệu quan trọng tại Ý.", "Được nhớ đến như một trong những cầu thủ có ảnh hưởng lớn nhất lịch sử bóng đá."]}, {"name": "Zinedine Zidane", "nation": "Pháp", "number": "10", "position": "Tiền vệ trung tâm", "style": "Điều tiết · Kỹ thuật · Nhãn quan", "image": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Zinedine_Zidane_2008-2.jpg", "alt": "Chân dung Zinedine Zidane", "meta": "Sinh năm 1972 · Pháp", "bio": "Zinedine Zidane là cựu tiền vệ người Pháp, nổi tiếng với khả năng xử lý bóng mềm mại, kiểm soát nhịp độ và tạo khác biệt trong những trận đấu lớn. Sau sự nghiệp cầu thủ tại Juventus và Real Madrid, ông tiếp tục thành công trên cương vị huấn luyện viên.", "clubs": ["Bordeaux", "Juventus", "Real Madrid"], "highlights": ["Vô địch World Cup 1998 và EURO 2000 cùng Pháp.", "Giành Quả bóng vàng năm 1998.", "Vô địch Champions League 2002 với Real Madrid; sau đó nhiều lần vô địch giải đấu trên cương vị huấn luyện viên."]}, {"name": "Ronaldinho", "nation": "Brazil", "number": "10", "position": "Tiền vệ tấn công / Chạy cánh", "style": "Ngẫu hứng · Kỹ thuật · Sáng tạo", "image": "https://cdn.arageek.com/magazine/2017/11/ronaldinho.jpg", "alt": "Chân dung Ronaldinho, cựu cầu thủ Brazil", "meta": "Sinh năm 1980 · Brazil", "bio": "Ronaldinho nổi tiếng với nụ cười, phong cách chơi bóng đầy ngẫu hứng và kỹ thuật xử lý bóng giàu tính biểu diễn. Anh có thể chơi ở vị trí tiền vệ tấn công hoặc tiền đạo cánh, tạo ra cơ hội bằng những pha rê bóng, chuyền không nhìn và đá phạt.", "clubs": ["Grêmio", "Paris Saint-Germain", "Barcelona", "AC Milan"], "highlights": ["Vô địch World Cup 2002 cùng Brazil.", "Giành Quả bóng vàng năm 2005.", "Góp công lớn giúp Barcelona trở lại vị thế hàng đầu châu Âu trong thập niên 2000."]}, {"name": "Kylian Mbappé", "nation": "Pháp", "number": "10", "position": "Tiền đạo / Chạy cánh", "style": "Tốc độ · Bứt tốc · Dứt điểm", "image": "https://cdn-img.zerozero.pt/img/planteis/new/84/68/5778468_kylian_mbappe_20240617103335.jpg", "alt": "Chân dung Kylian Mbappé", "meta": "Sinh năm 1998 · Pháp", "bio": "Kylian Mbappé sinh ngày 20 tháng 12 năm 1998 tại Paris, Pháp. Anh được biết đến với tốc độ bứt phá, khả năng di chuyển sau lưng hàng thủ và sự lạnh lùng khi dứt điểm. Mbappé sớm nổi tiếng tại Monaco, sau đó trở thành gương mặt chủ lực của Paris Saint-Germain và đội tuyển Pháp.", "clubs": ["Monaco", "Paris Saint-Germain", "Real Madrid"], "highlights": ["Vô địch World Cup 2018 cùng đội tuyển Pháp.", "Ghi hat-trick trong trận chung kết World Cup 2022.", "Là một trong những tiền đạo nổi bật của bóng đá đương đại."]}, {"name": "Erling Haaland", "nation": "Na Uy", "number": "9", "position": "Trung phong", "style": "Sức mạnh · Chọn vị trí · Dứt điểm", "image": "https://d27020bajtkr6c.cloudfront.net/06-13-2022/t_6ed382f4ed62474ea359d0607887cf3f_name_GettyImages_1402617690.jpg", "alt": "Chân dung Erling Haaland trong màu áo Manchester City", "meta": "Sinh năm 2000 · Na Uy", "bio": "Erling Haaland sinh ngày 21 tháng 7 năm 2000 tại Leeds, Anh và thi đấu quốc tế cho Na Uy. Anh là mẫu trung phong hiện đại với thể hình mạnh mẽ, khả năng tăng tốc, chọn vị trí trong vòng cấm và dứt điểm nhanh bằng cả hai chân.", "clubs": ["Red Bull Salzburg", "Borussia Dortmund", "Manchester City"], "highlights": ["Tạo dấu ấn ở nhiều giải vô địch quốc gia trước khi gia nhập Manchester City.", "Góp công giúp Manchester City giành cú ăn ba lịch sử mùa 2022–2023.", "Nổi bật với hiệu suất ghi bàn cao ở cấp câu lạc bộ."]}, {"name": "Andrés Iniesta", "nation": "Tây Ban Nha", "number": "8", "position": "Tiền vệ trung tâm", "style": "Kiểm soát · Phối hợp · Thoát pressing", "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Andres_Iniesta.jpg/960px-Andres_Iniesta.jpg", "alt": "Andrés Iniesta trong một sự kiện bóng đá", "meta": "Sinh năm 1984 · Tây Ban Nha", "bio": "Andrés Iniesta là tiền vệ người Tây Ban Nha, được đánh giá cao nhờ khả năng kiểm soát bóng, xoay sở trong không gian hẹp, phối hợp nhanh và giữ bình tĩnh trước áp lực. Anh là một phần quan trọng của Barcelona và thế hệ vàng đội tuyển Tây Ban Nha.", "clubs": ["Barcelona", "Vissel Kobe", "Emirates Club"], "highlights": ["Ghi bàn quyết định giúp Tây Ban Nha vô địch World Cup 2010.", "Vô địch EURO 2008 và 2012 cùng Tây Ban Nha.", "Giành nhiều danh hiệu lớn cùng Barcelona."]}];
+    const clubData = [{"name":"Real Madrid","meta":"Tây Ban Nha · La Liga","mark":"RM","tag":"15 lần vô địch Cúp C1/Champions League","bio":"Một trong những câu lạc bộ giàu thành tích nhất châu Âu, nổi tiếng với bản lĩnh ở các trận đấu lớn và màu áo trắng truyền thống.","highlights":["Thành lập năm 1902 tại Madrid.","Sân nhà: Santiago Bernabéu.","Các biểu tượng từng gắn bó: Alfredo Di Stéfano, Raúl, Cristiano Ronaldo, Luka Modrić."]},{"name":"Barcelona","meta":"Tây Ban Nha · La Liga","mark":"FCB","tag":"Lối chơi kiểm soát bóng","bio":"Câu lạc bộ xứ Catalonia được biết đến với triết lý kiểm soát bóng, đào tạo trẻ và bản sắc bóng đá kỹ thuật.","highlights":["Thành lập năm 1899 tại Barcelona.","Sân nhà: Spotify Camp Nou (giai đoạn cải tạo có thể ảnh hưởng địa điểm thi đấu).","Các biểu tượng: Johan Cruyff, Xavi, Iniesta, Lionel Messi."]},{"name":"Manchester United","meta":"Anh · Ngoại hạng Anh","mark":"MU","tag":"Quỷ đỏ thành Manchester","bio":"Một trong những câu lạc bộ có lượng người hâm mộ lớn trên thế giới, gắn với lịch sử lâu đời và nhiều thế hệ cầu thủ nổi tiếng.","highlights":["Thành lập năm 1878 với tên Newton Heath; đổi tên thành Manchester United năm 1902.","Sân nhà: Old Trafford.","Biểu tượng: Sir Bobby Charlton, Eric Cantona, Ryan Giggs, Wayne Rooney."]},{"name":"Liverpool","meta":"Anh · Ngoại hạng Anh","mark":"LFC","tag":"Truyền thống và bầu không khí Anfield","bio":"Liverpool nổi bật với lịch sử thành công ở bóng đá Anh và châu Âu, cùng văn hóa cổ động viên đặc biệt tại Anfield.","highlights":["Thành lập năm 1892.","Sân nhà: Anfield.","Những tên tuổi tiêu biểu: Kenny Dalglish, Steven Gerrard, Mohamed Salah."]},{"name":"Manchester City","meta":"Anh · Ngoại hạng Anh","mark":"MC","tag":"Kiểm soát bóng và phối hợp","bio":"Manchester City phát triển thành thế lực hàng đầu trong bóng đá Anh hiện đại với lối chơi kiểm soát bóng và tổ chức chiến thuật chặt chẽ.","highlights":["Thành lập năm 1880 với tên St. Mark's.","Sân nhà: Etihad Stadium.","Những gương mặt tiêu biểu: Vincent Kompany, David Silva, Kevin De Bruyne, Erling Haaland."]},{"name":"Bayern Munich","meta":"Đức · Bundesliga","mark":"FCB","tag":"Gã khổng lồ bóng đá Đức","bio":"Bayern Munich là câu lạc bộ tiêu biểu của Đức, nổi bật bởi tính ổn định, bản lĩnh và truyền thống cạnh tranh ở đấu trường châu Âu.","highlights":["Thành lập năm 1900 tại Munich.","Sân nhà: Allianz Arena.","Các biểu tượng: Franz Beckenbauer, Gerd Müller, Philipp Lahm, Thomas Müller."]},{"name":"Paris Saint-Germain","meta":"Pháp · Ligue 1","mark":"PSG","tag":"Đại diện nổi bật của Paris","bio":"PSG là câu lạc bộ lớn của bóng đá Pháp, thu hút nhiều ngôi sao quốc tế và thường xuyên góp mặt tại các giải đấu châu Âu.","highlights":["Thành lập năm 1970.","Sân nhà: Parc des Princes.","Các ngôi sao từng thi đấu: Ronaldinho, Zlatan Ibrahimović, Neymar, Kylian Mbappé."]},{"name":"AC Milan","meta":"Ý · Serie A","mark":"ACM","tag":"Rossoneri · Đỏ và đen","bio":"AC Milan có bề dày truyền thống ở bóng đá Ý và châu Âu, từng sở hữu nhiều thế hệ phòng ngự và tấn công xuất sắc.","highlights":["Thành lập năm 1899.","Sân nhà: San Siro (chia sẻ sân với Inter).","Các biểu tượng: Paolo Maldini, Franco Baresi, Kaká, Andriy Shevchenko."]},{"name":"Juventus","meta":"Ý · Serie A","mark":"JUV","tag":"Bà đầm già thành Turin","bio":"Juventus là một trong những câu lạc bộ giàu truyền thống nhất nước Ý, gắn với tính kỷ luật chiến thuật và màu áo sọc trắng đen.","highlights":["Thành lập năm 1897 tại Turin.","Sân nhà: Allianz Stadium.","Các tên tuổi: Alessandro Del Piero, Gianluigi Buffon, Pavel Nedvěd, Cristiano Ronaldo."]},{"name":"Inter Milan","meta":"Ý · Serie A","mark":"INT","tag":"Nerazzurri · Xanh và đen","bio":"Inter là câu lạc bộ lớn tại Milan, nổi bật với bản lĩnh thi đấu và lịch sử thành công trong bóng đá Ý lẫn châu Âu.","highlights":["Thành lập năm 1908.","Sân nhà: San Siro.","Những cầu thủ tiêu biểu: Javier Zanetti, Ronaldo Nazário, Diego Milito, Lautaro Martínez."]},{"name":"Arsenal","meta":"Anh · Ngoại hạng Anh","mark":"ARS","tag":"Pháo thủ thành London","bio":"Arsenal được biết đến với lối chơi kỹ thuật, truyền thống đào tạo cầu thủ và giai đoạn bất bại tại giải quốc nội mùa 2003–2004.","highlights":["Thành lập năm 1886.","Sân nhà: Emirates Stadium.","Các biểu tượng: Thierry Henry, Dennis Bergkamp, Patrick Vieira, Ian Wright."]},{"name":"Chelsea","meta":"Anh · Ngoại hạng Anh","mark":"CFC","tag":"Đội bóng áo xanh thành London","bio":"Chelsea là một trong những câu lạc bộ hàng đầu nước Anh trong thế kỷ XXI, với nhiều thành tích ở các giải quốc nội và châu Âu.","highlights":["Thành lập năm 1905.","Sân nhà: Stamford Bridge.","Những cầu thủ tiêu biểu: Frank Lampard, John Terry, Didier Drogba, Eden Hazard."]},{"name":"Atlético Madrid","meta":"Tây Ban Nha · La Liga","mark":"ATM","tag":"Los Colchoneros · Madrid","bio":"Atlético Madrid là câu lạc bộ lớn của thủ đô Tây Ban Nha, nổi bật với tinh thần thi đấu quyết liệt, tổ chức phòng ngự chặt chẽ và khả năng phản công sắc bén.","highlights":["Thành lập năm 1903 tại Madrid.","Sân nhà: Riyadh Air Metropolitano.","Những gương mặt tiêu biểu: Luis Aragonés, Fernando Torres, Diego Godín, Antoine Griezmann."]},{"name":"Borussia Dortmund","meta":"Đức · Bundesliga","mark":"BVB","tag":"Vàng và đen · Bức tường vàng","bio":"Borussia Dortmund là một trong những câu lạc bộ giàu truyền thống của Đức, được biết đến nhờ bầu không khí cuồng nhiệt tại sân nhà và sự phát triển của nhiều tài năng trẻ.","highlights":["Thành lập năm 1909.","Sân nhà: Signal Iduna Park.","Biểu tượng từng thi đấu: Matthias Sammer, Michael Zorc, Marco Reus, Robert Lewandowski."]},{"name":"Bayer Leverkusen","meta":"Đức · Bundesliga","mark":"B04","tag":"Die Werkself · Leverkusen","bio":"Bayer Leverkusen là đại diện nổi bật của bóng đá Đức, gây ấn tượng với lối chơi phối hợp hiện đại và khả năng phát triển cầu thủ chất lượng.","highlights":["Thành lập năm 1904.","Sân nhà: BayArena.","Màu sắc truyền thống: đỏ và đen."]},{"name":"RB Leipzig","meta":"Đức · Bundesliga","mark":"RBL","tag":"Đội bóng trẻ của nước Đức","bio":"RB Leipzig là câu lạc bộ có tuổi đời tương đối trẻ nhưng nhanh chóng vươn lên nhóm cạnh tranh ở bóng đá Đức nhờ cách tổ chức hiện đại và lối chơi giàu tốc độ.","highlights":["Thành lập năm 2009.","Sân nhà: Red Bull Arena.","Được biết đến với lối chơi pressing và chuyển trạng thái nhanh."]},{"name":"Tottenham Hotspur","meta":"Anh · Ngoại hạng Anh","mark":"THFC","tag":"Gà trống thành London","bio":"Tottenham Hotspur là câu lạc bộ lâu đời ở Bắc London, có truyền thống chơi bóng tấn công và sở hữu cộng đồng người hâm mộ đông đảo.","highlights":["Thành lập năm 1882.","Sân nhà: Tottenham Hotspur Stadium.","Những tên tuổi tiêu biểu: Jimmy Greaves, Glenn Hoddle, Ledley King, Harry Kane."]},{"name":"Newcastle United","meta":"Anh · Ngoại hạng Anh","mark":"NUFC","tag":"Chích chòe vùng Đông Bắc","bio":"Newcastle United là câu lạc bộ giàu bản sắc của vùng Đông Bắc nước Anh, nổi tiếng với sự cuồng nhiệt của người hâm mộ tại sân St James’ Park.","highlights":["Thành lập năm 1892.","Sân nhà: St James’ Park.","Màu áo truyền thống: sọc đen trắng."]},{"name":"Aston Villa","meta":"Anh · Ngoại hạng Anh","mark":"AVFC","tag":"Một trong những đội bóng lâu đời","bio":"Aston Villa là câu lạc bộ có lịch sử lâu đời của bóng đá Anh, từng giành nhiều danh hiệu lớn và có truyền thống thi đấu tại Birmingham.","highlights":["Thành lập năm 1874.","Sân nhà: Villa Park.","Màu áo truyền thống: đỏ rượu vang và xanh da trời."]},{"name":"West Ham United","meta":"Anh · Ngoại hạng Anh","mark":"WHU","tag":"The Hammers · Đông London","bio":"West Ham United là câu lạc bộ có bản sắc riêng tại London, gắn với truyền thống phát triển cầu thủ và tinh thần thi đấu mạnh mẽ.","highlights":["Thành lập năm 1895.","Sân nhà: London Stadium.","Biệt danh: The Hammers và The Irons."]},{"name":"Wolverhampton Wanderers","meta":"Anh · Ngoại hạng Anh","mark":"WOL","tag":"Bầy sói · Wolverhampton","bio":"Wolverhampton Wanderers, thường được gọi là Wolves, là câu lạc bộ giàu truyền thống của vùng West Midlands, nước Anh.","highlights":["Thành lập năm 1877.","Sân nhà: Molineux Stadium.","Màu áo truyền thống: vàng và đen."]},{"name":"AS Roma","meta":"Ý · Serie A","mark":"ROMA","tag":"Giallorossi · Thành Rome","bio":"AS Roma là một trong những câu lạc bộ lớn của thủ đô nước Ý, gắn liền với bản sắc thành phố và sự cuồng nhiệt của người hâm mộ.","highlights":["Thành lập năm 1927.","Sân nhà: Stadio Olimpico.","Những biểu tượng: Francesco Totti, Daniele De Rossi, Bruno Conti."]},{"name":"Napoli","meta":"Ý · Serie A","mark":"NAP","tag":"Gli Azzurri · Miền Nam nước Ý","bio":"Napoli là câu lạc bộ tiêu biểu của miền Nam nước Ý, có lượng người hâm mộ đông đảo và lịch sử gắn với huyền thoại Diego Maradona.","highlights":["Thành lập năm 1926.","Sân nhà: Stadio Diego Armando Maradona.","Biểu tượng nổi bật: Diego Maradona và nhiều thế hệ cầu thủ Napoli."]},{"name":"Atalanta","meta":"Ý · Serie A","mark":"ATA","tag":"La Dea · Bergamo","bio":"Atalanta là câu lạc bộ của thành phố Bergamo, được đánh giá cao nhờ hệ thống đào tạo trẻ và lối chơi tấn công giàu năng lượng.","highlights":["Thành lập năm 1907.","Sân nhà: New Balance Arena tại Bergamo.","Nổi bật với công tác đào tạo trẻ và lối chơi tấn công giàu năng lượng."]},{"name":"Lazio","meta":"Ý · Serie A","mark":"SSL","tag":"Biancocelesti · Thành Rome","bio":"Lazio là câu lạc bộ có truyền thống lâu đời tại Rome, mang màu áo xanh da trời và trắng.","highlights":["Thành lập năm 1900.","Sân nhà: Stadio Olimpico.","Đối thủ cùng thành phố: AS Roma trong trận derby della Capitale."]},{"name":"Sevilla FC","meta":"Tây Ban Nha · La Liga","mark":"SFC","tag":"Sevillistas · Andalusia","bio":"Sevilla FC là câu lạc bộ nổi tiếng của Tây Ban Nha, đặc biệt có thành tích đáng chú ý tại các giải đấu cấp câu lạc bộ châu Âu.","highlights":["Thành lập năm 1890.","Sân nhà: Ramón Sánchez-Pizjuán.","Màu sắc truyền thống: trắng và đỏ."]},{"name":"Valencia CF","meta":"Tây Ban Nha · La Liga","mark":"VCF","tag":"Los Che · Valencia","bio":"Valencia CF là một câu lạc bộ giàu truyền thống của Tây Ban Nha, từng nhiều lần cạnh tranh các danh hiệu quốc nội và châu Âu.","highlights":["Thành lập năm 1919.","Sân nhà: Mestalla.","Màu áo sân nhà truyền thống: trắng và đen."]},{"name":"Real Betis","meta":"Tây Ban Nha · La Liga","mark":"BET","tag":"Verdiblancos · Sevilla","bio":"Real Betis là câu lạc bộ của thành phố Sevilla, nổi bật với hai màu xanh lá và trắng cùng cộng đồng cổ động viên nhiệt thành.","highlights":["Thành lập năm 1907.","Sân nhà: Estadio Benito Villamarín.","Biệt danh: Los Verdiblancos."]},{"name":"Athletic Club","meta":"Tây Ban Nha · La Liga","mark":"ATH","tag":"Los Leones · Bilbao","bio":"Athletic Club có bản sắc độc đáo tại Tây Ban Nha, nổi bật với chính sách truyền thống ưu tiên cầu thủ có nguồn gốc hoặc được đào tạo tại xứ Basque.","highlights":["Thành lập năm 1898.","Sân nhà: San Mamés.","Màu áo truyền thống: sọc đỏ trắng và quần đen."]},{"name":"Olympique Lyonnais","meta":"Pháp · Ligue 1","mark":"OL","tag":"Les Gones · Lyon","bio":"Olympique Lyonnais là câu lạc bộ nổi bật của nước Pháp, từng có giai đoạn thống trị giải quốc nội và nổi tiếng với công tác đào tạo cầu thủ.","highlights":["Thành lập năm 1950.","Sân nhà: Groupama Stadium.","Màu sắc truyền thống: trắng, xanh và đỏ."]},{"name":"Olympique de Marseille","meta":"Pháp · Ligue 1","mark":"OM","tag":"Les Phocéens · Marseille","bio":"Olympique de Marseille là một trong những câu lạc bộ có lượng cổ động viên đông đảo nhất nước Pháp, gắn với bầu không khí sôi động tại miền Nam.","highlights":["Thành lập năm 1899.","Sân nhà: Orange Vélodrome.","Là câu lạc bộ Pháp đầu tiên vô địch Cúp C1 châu Âu năm 1993."]},{"name":"AS Monaco","meta":"Pháp · Ligue 1","mark":"ASM","tag":"Les Monégasques · Monaco","bio":"AS Monaco là câu lạc bộ có trụ sở tại Công quốc Monaco, nổi tiếng với việc phát hiện và phát triển nhiều cầu thủ trẻ tài năng.","highlights":["Thành lập năm 1924.","Sân nhà: Stade Louis-II.","Từng phát triển nhiều cầu thủ nổi bật của bóng đá châu Âu."]},{"name":"Sporting CP","meta":"Bồ Đào Nha · Liga Portugal","mark":"SCP","tag":"Leões · Lisbon","bio":"Sporting CP là một trong những câu lạc bộ lớn và giàu truyền thống của Bồ Đào Nha, nổi bật với học viện đào tạo trẻ.","highlights":["Thành lập năm 1906.","Sân nhà: Estádio José Alvalade.","Cristiano Ronaldo là một trong những cầu thủ trưởng thành từ học viện Sporting CP."]}];
+    const teamData = [{"name": "Argentina", "meta": "Nam Mỹ", "mark": "🇦🇷", "tag": "La Albiceleste", "bio": "Đội tuyển giàu truyền thống của Nam Mỹ, nổi bật bởi tinh thần chiến đấu, kỹ thuật cá nhân và những cầu thủ sáng tạo.", "highlights": ["Vô địch World Cup 1978, 1986 và 2022.", "Các biểu tượng: Diego Maradona, Lionel Messi, Gabriel Batistuta.", "Màu áo truyền thống: xanh da trời và trắng."], "flagCode": "ar"}, {"name": "Brazil", "meta": "Nam Mỹ", "mark": "🇧🇷", "tag": "Seleção", "bio": "Brazil là biểu tượng của bóng đá tấn công, kỹ thuật và ngẫu hứng, với nhiều thế hệ cầu thủ có ảnh hưởng trên toàn thế giới.", "highlights": ["Năm lần vô địch World Cup nam.", "Các biểu tượng: Pelé, Zico, Romário, Ronaldo Nazário, Ronaldinho, Neymar.", "Màu áo truyền thống: vàng, xanh lá."], "flagCode": "br"}, {"name": "Pháp", "meta": "Châu Âu", "mark": "🇫🇷", "tag": "Les Bleus", "bio": "Pháp sở hữu truyền thống kết hợp kỹ thuật, tốc độ và sức mạnh thể chất, đồng thời có hệ thống đào tạo trẻ nổi tiếng.", "highlights": ["Vô địch World Cup 1998 và 2018.", "Các biểu tượng: Michel Platini, Zinedine Zidane, Thierry Henry, Kylian Mbappé.", "Màu áo truyền thống: xanh lam."], "flagCode": "fr"}, {"name": "Tây Ban Nha", "meta": "Châu Âu", "mark": "🇪🇸", "tag": "La Roja", "bio": "Tây Ban Nha nổi tiếng với lối chơi chuyền bóng ngắn, di chuyển linh hoạt và kiểm soát khu trung tuyến.", "highlights": ["Vô địch World Cup 2010.", "Vô địch EURO 2008, 2012 và 2024.", "Các biểu tượng: Xavi, Andrés Iniesta, Iker Casillas, Sergio Ramos."], "flagCode": "es"}, {"name": "Đức", "meta": "Châu Âu", "mark": "🇩🇪", "tag": "Die Mannschaft", "bio": "Đội tuyển Đức gắn với tính tổ chức, kỷ luật chiến thuật và khả năng thi đấu bền bỉ trong các giải lớn.", "highlights": ["Bốn lần vô địch World Cup nam.", "Các biểu tượng: Franz Beckenbauer, Miroslav Klose, Lothar Matthäus, Manuel Neuer.", "Màu áo truyền thống: trắng và đen."], "flagCode": "de"}, {"name": "Bồ Đào Nha", "meta": "Châu Âu", "mark": "🇵🇹", "tag": "Seleção das Quinas", "bio": "Bồ Đào Nha nổi bật với kỹ thuật cá nhân, các cầu thủ chạy cánh sáng tạo và nhiều thế hệ tài năng.", "highlights": ["Vô địch EURO 2016.", "Các biểu tượng: Eusébio, Luís Figo, Cristiano Ronaldo.", "Màu áo truyền thống: đỏ và xanh lá."], "flagCode": "pt"}, {"name": "Anh", "meta": "Châu Âu", "mark": "🏴", "tag": "The Three Lions", "bio": "Đội tuyển Anh là một trong những đội tuyển lâu đời nhất, gắn với sự ra đời và phát triển của bóng đá hiện đại.", "highlights": ["Vô địch World Cup 1966.", "Các biểu tượng: Bobby Charlton, David Beckham, Wayne Rooney, Harry Kane.", "Màu áo truyền thống: trắng."], "flagCode": "eng"}, {"name": "Ý", "meta": "Châu Âu", "mark": "🇮🇹", "tag": "Azzurri", "bio": "Bóng đá Ý gắn liền với nghệ thuật phòng ngự, tổ chức chiến thuật và những hậu vệ xuất sắc qua nhiều thời kỳ.", "highlights": ["Bốn lần vô địch World Cup nam.", "Các biểu tượng: Paolo Maldini, Franco Baresi, Roberto Baggio, Gianluigi Buffon.", "Màu áo truyền thống: xanh thiên thanh."], "flagCode": "it"}, {"name": "Hà Lan", "meta": "Châu Âu", "mark": "🇳🇱", "tag": "Oranje", "bio": "Hà Lan có ảnh hưởng lớn đến tư duy chiến thuật với khái niệm bóng đá tổng lực, đề cao hoán đổi vị trí và khả năng chơi đa năng.", "highlights": ["Ba lần vào chung kết World Cup nam.", "Các biểu tượng: Johan Cruyff, Marco van Basten, Dennis Bergkamp, Arjen Robben.", "Màu áo truyền thống: cam."], "flagCode": "nl"}, {"name": "Nhật Bản", "meta": "Châu Á", "mark": "🇯🇵", "tag": "Samurai Blue", "bio": "Nhật Bản là một trong những đội tuyển phát triển ổn định của châu Á, nổi bật với tốc độ, kỷ luật và khả năng tổ chức đội hình.", "highlights": ["Nhiều lần vô địch Cúp bóng đá châu Á.", "Các gương mặt tiêu biểu: Hidetoshi Nakata, Shinji Kagawa, Keisuke Honda, Takefusa Kubo.", "Màu áo truyền thống: xanh lam."], "flagCode": "jp"}, {"name": "Việt Nam", "meta": "Châu Á", "mark": "🇻🇳", "tag": "Những chiến binh Sao Vàng", "bio": "Đội tuyển Việt Nam có lượng người hâm mộ đông đảo, gắn với tinh thần thi đấu nhiệt huyết và niềm tự hào dân tộc.", "highlights": ["Vô địch AFF Cup các năm 2008 và 2018.", "Các gương mặt tiêu biểu: Lê Công Vinh, Nguyễn Quang Hải, Đỗ Hùng Dũng, Nguyễn Tiến Linh.", "Màu áo truyền thống: đỏ."], "flagCode": "vn"}];
+
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const playersGrid = document.getElementById('playersGrid');
+    const playerSearch = document.getElementById('playerSearch');
+    const playerCount = document.getElementById('playerCount');
+    const clubsGrid = document.getElementById('clubsGrid');
+    const clubSearch = document.getElementById('clubSearch');
+    const clubCount = document.getElementById('clubCount');
+    const teamsGrid = document.getElementById('teamsGrid');
+
+    function renderPlayers(term = '') {
+      const needle = term.trim().toLocaleLowerCase('vi');
+      const filtered = playerData.filter(p => [p.name, p.nation, p.position, p.style].join(' ').toLocaleLowerCase('vi').includes(needle));
+      playerCount.textContent = `${filtered.length} / ${playerData.length} cầu thủ`;
+      playersGrid.innerHTML = filtered.length ? filtered.map((p, i) => `
+        <button class="player-card" type="button" data-open-player="${escapeHtml(p.name)}" aria-label="Xem tiểu sử ${escapeHtml(p.name)}">
+          <div class="player-visual">
+            <img class="player-photo" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.alt)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.classList.add('image-missing');">
+            <span class="player-country">${escapeHtml(p.nation)}</span><span class="player-index">${escapeHtml(p.number)}</span>
+          </div>
+          <div class="player-info"><h3>${escapeHtml(p.name)}</h3><span class="position">${escapeHtml(p.position)}</span><p>${escapeHtml(p.style)}. Bấm để xem hồ sơ đầy đủ.</p><span class="read-more">Xem tiểu sử</span></div>
+        </button>`).join('') : '<div class="empty-state">Không tìm thấy cầu thủ phù hợp. Hãy thử một tên hoặc quốc gia khác.</div>';
+    }
+
+    const clubLogoMap = {
+      "Real Madrid": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/86.png", page: "https://www.espn.com/soccer/team/_/id/86"},
+      "Barcelona": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/83.png", page: "https://www.espn.com/soccer/team/_/id/83"},
+      "Manchester United": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/360.png", page: "https://www.espn.com/soccer/team/_/id/360"},
+      "Liverpool": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/364.png", page: "https://www.espn.com/soccer/team/_/id/364"},
+      "Manchester City": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/382.png", page: "https://www.espn.com/soccer/team/_/id/382"},
+      "Bayern Munich": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/132.png", page: "https://www.espn.com/soccer/team/_/id/132"},
+      "Paris Saint-Germain": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/160.png", page: "https://www.espn.com/soccer/team/_/id/160"},
+      "AC Milan": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/103.png", page: "https://www.espn.com/soccer/team/_/id/103"},
+      "Juventus": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/111.png", page: "https://www.espn.com/soccer/team/_/id/111"},
+      "Inter Milan": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/110.png", page: "https://www.espn.com/soccer/team/_/id/110"},
+      "Arsenal": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/359.png", page: "https://www.espn.com/soccer/team/_/id/359"},
+      "Chelsea": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/363.png", page: "https://www.espn.com/soccer/team/_/id/363"},
+      "Atlético Madrid": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png", page: "https://www.espn.com/soccer/team/_/id/1068"},
+      "Borussia Dortmund": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/124.png", page: "https://www.espn.com/soccer/team/_/id/124"},
+      "Bayer Leverkusen": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/131.png", page: "https://www.espn.com/soccer/team/_/id/131"},
+      "RB Leipzig": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png", page: "https://www.espn.com/soccer/team/_/id/11420"},
+      "Tottenham Hotspur": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/367.png", page: "https://www.espn.com/soccer/team/_/id/367"},
+      "Newcastle United": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/361.png", page: "https://www.espn.com/soccer/team/_/id/361"},
+      "Aston Villa": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/362.png", page: "https://www.espn.com/soccer/team/_/id/362"},
+      "West Ham United": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/371.png", page: "https://www.espn.com/soccer/team/_/id/371"},
+      "Wolverhampton Wanderers": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/380.png", page: "https://www.espn.com/soccer/team/_/id/380"},
+      "AS Roma": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/104.png", page: "https://www.espn.com/soccer/team/_/id/104"},
+      "Napoli": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/114.png", page: "https://www.espn.com/soccer/team/_/id/114"},
+      "Atalanta": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/105.png", page: "https://www.espn.com/soccer/team/_/id/105"},
+      "Lazio": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/112.png", page: "https://www.espn.com/soccer/team/_/id/112"},
+      "Sevilla FC": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/243.png", page: "https://www.espn.com/soccer/team/_/id/243"},
+      "Valencia CF": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/94.png", page: "https://www.espn.com/soccer/team/_/id/94"},
+      "Real Betis": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/244.png", page: "https://www.espn.com/soccer/team/_/id/244"},
+      "Athletic Club": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/93.png", page: "https://www.espn.com/soccer/team/_/id/93"},
+      "Olympique Lyonnais": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/167.png", page: "https://www.espn.com/soccer/team/_/id/167"},
+      "Olympique de Marseille": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/176.png", page: "https://www.espn.com/soccer/team/_/id/176"},
+      "AS Monaco": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/174.png", page: "https://www.espn.com/soccer/team/_/id/174"},
+      "Sporting CP": {src: "https://a.espncdn.com/i/teamlogos/soccer/500/2250.png", page: "https://www.espn.com/soccer/team/_/id/2250"}
+    };
+
+    // Các lá cờ được vẽ bằng SVG đơn giản để hiển thị ổn định trên nhiều máy tính.
+    function renderFlag(code) {
+      const flags = {
+        ar: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Argentina"><rect width="60" height="40" fill="#fff"/><rect width="60" height="13.34" fill="#74acdf"/><rect y="26.66" width="60" height="13.34" fill="#74acdf"/><circle cx="30" cy="20" r="4" fill="#f6b40e"/><g stroke="#f6b40e" stroke-width="1"><path d="M30 12v3M30 25v3M22 20h3M35 20h3M24.4 14.4l2.1 2.1M33.5 23.5l2.1 2.1M35.6 14.4l-2.1 2.1M26.5 23.5l-2.1 2.1"/></g></svg>`,
+        br: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Brazil"><rect width="60" height="40" fill="#009739"/><path d="M30 4 55 20 30 36 5 20Z" fill="#ffdf00"/><circle cx="30" cy="20" r="9" fill="#002776"/><path d="M22 17.5Q30 15 38 19" fill="none" stroke="#fff" stroke-width="1.7"/></svg>`,
+        fr: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Pháp"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ed2939"/></svg>`,
+        es: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Tây Ban Nha"><rect width="60" height="10" fill="#aa151b"/><rect y="10" width="60" height="20" fill="#f1bf00"/><rect y="30" width="60" height="10" fill="#aa151b"/><rect x="14" y="14" width="4" height="12" rx=".5" fill="#aa151b"/></svg>`,
+        de: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Đức"><rect width="60" height="13.34" fill="#000"/><rect y="13.33" width="60" height="13.34" fill="#dd0000"/><rect y="26.66" width="60" height="13.34" fill="#ffce00"/></svg>`,
+        pt: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Bồ Đào Nha"><rect width="24" height="40" fill="#006600"/><rect x="24" width="36" height="40" fill="#ff0000"/><circle cx="24" cy="20" r="6.5" fill="#ffcc00" stroke="#fff" stroke-width="1"/><circle cx="24" cy="20" r="3.8" fill="#ff0000"/></svg>`,
+        eng: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Anh"><rect width="60" height="40" fill="#fff"/><path d="M25 0h10v15h25v10H35v15H25V25H0V15h25Z" fill="#cf142b"/></svg>`,
+        it: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Ý"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ce2b37"/></svg>`,
+        nl: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Hà Lan"><rect width="60" height="13.34" fill="#ae1c28"/><rect y="13.33" width="60" height="13.34" fill="#fff"/><rect y="26.66" width="60" height="13.34" fill="#21468b"/></svg>`,
+        jp: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Nhật Bản"><rect width="60" height="40" fill="#fff"/><circle cx="30" cy="20" r="10" fill="#bc002d"/></svg>`,
+        vn: `<svg class="team-flag-svg" viewBox="0 0 60 40" role="img" aria-label="Cờ Việt Nam"><rect width="60" height="40" fill="#da251d"/><path d="m30 7 3.2 9.2 9.7.1-7.8 5.8 3 9.2-8.1-5.6-8.1 5.6 3-9.2-7.8-5.8 9.7-.1Z" fill="#ffde00"/></svg>`
+      };
+      return flags[code] || `<span class="team-flag-svg" role="img" aria-label="Quốc kỳ">🏳️</span>`;
+    }
+
+    function renderDirectory(target, data, kind, term = '') {
+      const needle = term.trim().toLocaleLowerCase('vi');
+      const visibleItems = kind === 'club' && needle
+        ? data.filter(item => [item.name, item.meta, item.tag].join(' ').toLocaleLowerCase('vi').includes(needle))
+        : data;
+      if (kind === 'club' && clubCount) clubCount.textContent = `${visibleItems.length} / ${data.length} câu lạc bộ`;
+      target.innerHTML = visibleItems.length ? visibleItems.map(item => {
+        const slug = item.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const visual = kind === 'team'
+          ? `<span class="directory-mark team-mark">${renderFlag(item.flagCode)}</span>`
+          : `<span class="directory-mark club-mark club-mark-${slug}"><span class="logo-fallback">${escapeHtml(item.mark)}</span><img src="${escapeHtml(clubLogoMap[item.name]?.src || '')}" alt="Logo ${escapeHtml(item.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.parentElement.classList.add('logo-missing');"></span>`;
+        return `
+        <button class="directory-card" type="button" data-open-kind="${kind}" data-open-name="${escapeHtml(item.name)}" aria-label="Xem thông tin ${escapeHtml(item.name)}">
+          ${visual}
+          <span class="directory-info"><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.meta)}</span><small>${escapeHtml(item.tag)}</small></span>
+        </button>`;
+      }).join('') : `<div class="empty-state">Không tìm thấy câu lạc bộ phù hợp. Hãy thử tên khác.</div>`;
+    }
+    renderPlayers();
+    renderDirectory(clubsGrid, clubData, 'club');
+    renderDirectory(teamsGrid, teamData, 'team');
+    playerSearch.addEventListener('input', event => renderPlayers(event.target.value));
+    clubSearch.addEventListener('input', event => renderDirectory(clubsGrid, clubData, 'club', event.target.value));
+
+    const backdrop = document.getElementById('detailBackdrop');
+    const closeDetail = () => { backdrop.classList.remove('open'); backdrop.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; };
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+    backdrop.addEventListener('click', event => { if (event.target === backdrop) closeDetail(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && backdrop.classList.contains('open')) closeDetail(); });
+
+    function openDetail(kind, name) {
+      let item;
+      if (kind === 'player') item = playerData.find(p => p.name === name);
+      if (kind === 'club') item = clubData.find(p => p.name === name);
+      if (kind === 'team') item = teamData.find(p => p.name === name);
+      if (!item) return;
+      document.getElementById('detailKicker').textContent = kind === 'player' ? 'HỒ SƠ CẦU THỦ' : kind === 'club' ? 'HỒ SƠ CÂU LẠC BỘ' : 'HỒ SƠ ĐỘI TUYỂN';
+      document.getElementById('detailTitle').textContent = item.name;
+      document.getElementById('detailMeta').textContent = item.meta || `${item.nation} · ${item.position}`;
+      let content = `<p>${escapeHtml(item.bio)}</p>`;
+      if (kind === 'player') content += `<h3>Phong cách thi đấu</h3><p>${escapeHtml(item.style)}.</p><h3>Các câu lạc bộ từng thi đấu</h3><ul>${item.clubs.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`;
+      if (kind === 'club') content += `<h3>Điểm đáng chú ý</h3><ul>${item.highlights.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`;
+      if (kind === 'team') content += `<h3>Thông tin nổi bật</h3><ul>${item.highlights.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`;
+      if (kind === 'player') content += `<h3>Dấu ấn sự nghiệp</h3><ul>${item.highlights.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul>`;
+      document.getElementById('detailBody').innerHTML = content;
+      backdrop.classList.add('open'); backdrop.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden';
+      document.getElementById('detailClose').focus();
+    }
+    document.addEventListener('click', event => {
+      const playerButton = event.target.closest('[data-open-player]');
+      const directoryButton = event.target.closest('[data-open-kind]');
+      if (playerButton) openDetail('player', playerButton.dataset.openPlayer);
+      else if (directoryButton) openDetail(directoryButton.dataset.openKind, directoryButton.dataset.openName);
+    });
+
+  </script>
+</body>
+</html>
